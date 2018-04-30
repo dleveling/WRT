@@ -67,13 +67,8 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         WRDtv.setText(wordShuffled);
         WRDet.setText("");
 
-        System.out.print(wordToFind);
 
-        img.setImageResource(R.drawable.snake);
-
-       /* img.setTag(wordToFind);
-
-        for (int i=0; i<imageArray.length; i++){
+        /*for (int i=0; i<imageArray.length; i++){
 
             img.setImageResource(imageArray[i]);
             img.setTag(imageArray[i]);
@@ -81,14 +76,14 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
 
             System.out.print(viewname);
 
-            if( viewname.equals(imgName))
+            if( viewname.equals(wordToFind))
             {
                 img.setImageResource(imageArray[i]);
             }
 
         }*/
 
-        /*if (wordToFind == "monkey"){
+        if (wordToFind == "monkey"){
             img.setImageResource(R.drawable.monkey);
         }else if(wordToFind == "ant"){
             img.setImageResource(R.drawable.ant);
@@ -114,7 +109,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
             img.setImageResource(R.drawable.dog);
         }else {
             img.setImageResource(R.drawable.octopus);
-        }*/
+        }
 
     }
 
