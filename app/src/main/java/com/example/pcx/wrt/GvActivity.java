@@ -12,12 +12,16 @@ import android.widget.Toast;
 
 public class GvActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public int[] imageArray = {R.drawable.ant,R.drawable.snake,R.drawable.spider,R.drawable.king,R.drawable.boat,R.drawable.bee,R.drawable.alligator
+            ,R.drawable.bear,R.drawable.fish,R.drawable.monkey,R.drawable.cat,R.drawable.dog,R.drawable.octopus};
+
     private TextView WRDtv;
     private EditText WRDet;
     private Button checkbt,skipbt;
     private String wordToFind;
     private ImageView img;
     public String imgName = "";
+    public String viewname = "";
 
     @SuppressLint("ResourceType")
     @Override
@@ -56,12 +60,62 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     }
 
     private void newGame(){
+
         wordToFind = WRTs.randomWords();
-        imgName = wordToFind;
+        imgName = "R.drawable."+wordToFind;
         String wordShuffled = WRTs.shuffleword(wordToFind);
         WRDtv.setText(wordShuffled);
         WRDet.setText("");
+
+        System.out.print(wordToFind);
+
         img.setImageResource(R.drawable.snake);
+
+       /* img.setTag(wordToFind);
+
+        for (int i=0; i<imageArray.length; i++){
+
+            img.setImageResource(imageArray[i]);
+            img.setTag(imageArray[i]);
+            viewname = String.valueOf(img.getTag());
+
+            System.out.print(viewname);
+
+            if( viewname.equals(imgName))
+            {
+                img.setImageResource(imageArray[i]);
+            }
+
+        }*/
+
+        /*if (wordToFind == "monkey"){
+            img.setImageResource(R.drawable.monkey);
+        }else if(wordToFind == "ant"){
+            img.setImageResource(R.drawable.ant);
+        }else if(wordToFind == "snake"){
+            img.setImageResource(R.drawable.snake);
+        }else if(wordToFind == "spider"){
+            img.setImageResource(R.drawable.spider);
+        }else if(wordToFind == "king"){
+            img.setImageResource(R.drawable.king);
+        }else if(wordToFind == "boat"){
+            img.setImageResource(R.drawable.boat);
+        }else if(wordToFind == "bee"){
+            img.setImageResource(R.drawable.bee);
+        }else if(wordToFind == "alligator"){
+            img.setImageResource(R.drawable.alligator);
+        }else if(wordToFind == "bear"){
+            img.setImageResource(R.drawable.bear);
+        }else if(wordToFind == "fish"){
+            img.setImageResource(R.drawable.fish);
+        }else if(wordToFind == "cat"){
+            img.setImageResource(R.drawable.cat);
+        }else if(wordToFind == "dog"){
+            img.setImageResource(R.drawable.dog);
+        }else {
+            img.setImageResource(R.drawable.octopus);
+        }*/
+
     }
 
 }
