@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkbluegrey"
     tools:context=".GvActivity">
 
     <TextView
+        android:textColor="@color/white"
+        android:background="@drawable/circletvborder"
         android:id="@+id/chancegame_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,18 +22,21 @@
 
     <TextView
         android:id="@+id/scoregame_id"
-        android:layout_width="163dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="18dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/circletvborder"
         android:gravity="right"
         android:text="Score 0"
+        android:textColor="@color/white"
         android:textSize="30dp" />
 
     <ImageView
         android:id="@+id/wrdimg"
+        android:background="@drawable/circletvborder"
         android:layout_width="165dp"
         android:layout_height="165dp"
         android:layout_alignParentTop="true"
@@ -40,6 +46,7 @@
         android:layout_below="@id/scoregame_id"/>
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/tv_wtf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +58,7 @@
         android:textStyle="bold"/>
 
     <EditText
+        android:textColor="@color/white"
         android:id="@+id/et_enter"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -60,21 +68,25 @@
         android:layout_marginTop="40dp"/>
 
     <Button
+        android:textColor="@color/white"
         android:id="@+id/bt_checkwrt"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/et_enter"
         android:layout_centerHorizontal="true"
         android:text="Check"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttonstyle"/>
 
     <Button
+        android:textColor="@color/white"
         android:id="@+id/bt_skipwrt"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/bt_checkwrt"
         android:layout_centerHorizontal="true"
         android:text="Skip"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:background="@drawable/buttonstyle"/>
 
 </RelativeLayout>

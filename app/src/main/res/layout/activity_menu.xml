@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:text="New Game"
             android:layout_marginTop="140dp"
-            android:layout_marginLeft="140dp"/>
+            android:layout_marginLeft="140dp"
+            android:background="@drawable/buttonstyle"/>
 
     </LinearLayout>
 </RelativeLayout>
