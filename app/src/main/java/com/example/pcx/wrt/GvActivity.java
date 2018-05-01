@@ -15,6 +15,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     public int[] imageArray = {R.drawable.ant,R.drawable.snake,R.drawable.spider,R.drawable.king,R.drawable.boat,R.drawable.bee,R.drawable.alligator
             ,R.drawable.bear,R.drawable.fish,R.drawable.monkey,R.drawable.cat,R.drawable.dog,R.drawable.octopus};
 
+    private TextView SkipChance;
     private TextView Score ;
     private TextView WRDtv;
     private EditText WRDet;
@@ -32,6 +33,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gv);
 
+        SkipChance = (TextView) findViewById(R.id.chancegame_id);
         Score = (TextView) findViewById(R.id.scoregame_id);
         WRDtv = (TextView) findViewById(R.id.tv_wtf);
         WRDet = (EditText) findViewById(R.id.et_enter);
@@ -65,7 +67,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         if (wordToFind.equals(wrd)){
             Toast.makeText(this,"Correct,Get 1 Point !!!" + wordToFind,Toast.LENGTH_SHORT).show();
             ScoreUp();
-            Score.setText("Score "+(sc));
+            Score.setText("Score : "+(sc));
             newGame();
         }else{
             Toast.makeText(this,"Retry !",Toast.LENGTH_SHORT).show();
@@ -73,12 +75,14 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     }
 
     private void newGame(){
+        SkipChance.setText("Skip : "+(skipChance));
         wordToFind = WRTs.randomWords();
         setImage(wordToFind);
         imgName = "R.drawable."+wordToFind;
         String wordShuffled = WRTs.shuffleword(wordToFind);
         WRDtv.setText(wordShuffled);
         WRDet.setText("");
+
     }
 
     private void setImage(String wordTF){
