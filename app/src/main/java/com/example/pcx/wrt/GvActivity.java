@@ -15,13 +15,16 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     public int[] imageArray = {R.drawable.ant,R.drawable.snake,R.drawable.spider,R.drawable.king,R.drawable.boat,R.drawable.bee,R.drawable.alligator
             ,R.drawable.bear,R.drawable.fish,R.drawable.monkey,R.drawable.cat,R.drawable.dog,R.drawable.octopus};
 
+    private TextView Score ;
     private TextView WRDtv;
     private EditText WRDet;
     private Button checkbt,skipbt;
     private String wordToFind;
     private ImageView img;
     public String imgName = "";
-    public String viewname = "";
+
+    int sc = 0;
+    int skipChance = 3;
 
     @SuppressLint("ResourceType")
     @Override
@@ -29,6 +32,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gv);
 
+        Score = (TextView) findViewById(R.id.scoregame_id);
         WRDtv = (TextView) findViewById(R.id.tv_wtf);
         WRDet = (EditText) findViewById(R.id.et_enter);
         checkbt = (Button) findViewById(R.id.bt_checkwrt);
@@ -45,7 +49,14 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         if(v == checkbt){
             CheckWrd();
         }else if (v == skipbt){
-            newGame();
+            if (skipChance <= 3 && skipChance > 0){
+                skipChance = skipChance - 1;
+                Toast.makeText(this,"Chance Left : " + skipChance ,Toast.LENGTH_SHORT).show();
+                newGame();
+            }else{
+                Toast.makeText(this," Game Over ! " ,Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
@@ -53,6 +64,8 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         String wrd = WRDet.getText().toString();
         if (wordToFind.equals(wrd)){
             Toast.makeText(this,"Correct,Get 1 Point !!!" + wordToFind,Toast.LENGTH_SHORT).show();
+            ScoreUp();
+            Score.setText("Score "+(sc));
             newGame();
         }else{
             Toast.makeText(this,"Retry !",Toast.LENGTH_SHORT).show();
@@ -60,57 +73,47 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     }
 
     private void newGame(){
-
         wordToFind = WRTs.randomWords();
+        setImage(wordToFind);
         imgName = "R.drawable."+wordToFind;
         String wordShuffled = WRTs.shuffleword(wordToFind);
         WRDtv.setText(wordShuffled);
         WRDet.setText("");
+    }
 
+    private void setImage(String wordTF){
 
-        /*for (int i=0; i<imageArray.length; i++){
-
-            img.setImageResource(imageArray[i]);
-            img.setTag(imageArray[i]);
-            viewname = String.valueOf(img.getTag());
-
-            System.out.print(viewname);
-
-            if( viewname.equals(wordToFind))
-            {
-                img.setImageResource(imageArray[i]);
-            }
-
-        }*/
-
-        if (wordToFind == "monkey"){
+        if (wordTF == "monkey"){
             img.setImageResource(R.drawable.monkey);
-        }else if(wordToFind == "ant"){
+        }else if(wordTF == "ant"){
             img.setImageResource(R.drawable.ant);
-        }else if(wordToFind == "snake"){
+        }else if(wordTF == "snake"){
             img.setImageResource(R.drawable.snake);
-        }else if(wordToFind == "spider"){
+        }else if(wordTF == "spider"){
             img.setImageResource(R.drawable.spider);
-        }else if(wordToFind == "king"){
+        }else if(wordTF == "king"){
             img.setImageResource(R.drawable.king);
-        }else if(wordToFind == "boat"){
+        }else if(wordTF == "boat"){
             img.setImageResource(R.drawable.boat);
-        }else if(wordToFind == "bee"){
+        }else if(wordTF == "bee"){
             img.setImageResource(R.drawable.bee);
-        }else if(wordToFind == "alligator"){
+        }else if(wordTF == "alligator"){
             img.setImageResource(R.drawable.alligator);
-        }else if(wordToFind == "bear"){
+        }else if(wordTF == "bear"){
             img.setImageResource(R.drawable.bear);
-        }else if(wordToFind == "fish"){
+        }else if(wordTF == "fish"){
             img.setImageResource(R.drawable.fish);
-        }else if(wordToFind == "cat"){
+        }else if(wordTF == "cat"){
             img.setImageResource(R.drawable.cat);
-        }else if(wordToFind == "dog"){
+        }else if(wordTF == "dog"){
             img.setImageResource(R.drawable.dog);
         }else {
             img.setImageResource(R.drawable.octopus);
         }
+    }
 
+    private void ScoreUp(){
+        sc = sc+1;
     }
 
 }
