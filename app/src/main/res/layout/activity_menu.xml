@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bcp2"
     tools:context=".MenuActivity">
 
     <LinearLayout
@@ -15,21 +16,25 @@
 
         <TextView
             android:id="@+id/textView3"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:gravity="center"
             android:text="WRT"
-            android:textSize="50dp" />
-
-        <Button
-            android:id="@+id/bt_newgame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Game"
-            android:layout_marginTop="140dp"
-            android:layout_marginLeft="140dp"
-            android:background="@drawable/buttonstyle"/>
+            android:textSize="150dp" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_newgame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="155dp"
+        android:background="@drawable/buttonstyle"
+        android:text="New Game"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
 </RelativeLayout>
