@@ -16,7 +16,7 @@ import org.w3c.dom.Text;
 public class GvActivity extends AppCompatActivity implements View.OnClickListener {
 
     public int[] imageArray = {R.drawable.ant,R.drawable.snake,R.drawable.spider,R.drawable.king,R.drawable.boat,R.drawable.bee,R.drawable.alligator
-            ,R.drawable.bear,R.drawable.fish,R.drawable.monkey,R.drawable.cat,R.drawable.dog,R.drawable.octopus};
+            ,R.drawable.bear,R.drawable.fish,R.drawable.monkey,R.drawable.cat,R.drawable.dog,R.drawable.octopus,R.drawable.horse,R.drawable.jellyfish,R.drawable.lion,R.drawable.owl,R.drawable.rabbit,R.drawable.starfish,R.drawable.tiger};
 
     private TextView SkipChance;
     private TextView Lid;
@@ -127,6 +127,20 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
             img.setImageResource(R.drawable.cat);
         }else if(wordTF == "dog"){
             img.setImageResource(R.drawable.dog);
+        }else if(wordTF == "horse"){
+            img.setImageResource(R.drawable.horse);
+        }else if(wordTF == "jellyfish"){
+            img.setImageResource(R.drawable.jellyfish);
+        }else if(wordTF == "lion"){
+            img.setImageResource(R.drawable.lion);
+        }else if(wordTF == "owl"){
+            img.setImageResource(R.drawable.owl);
+        }else if(wordTF == "rabbit"){
+            img.setImageResource(R.drawable.rabbit);
+        }else if(wordTF == "starfish"){
+            img.setImageResource(R.drawable.starfish);
+        }else if(wordTF == "tiger"){
+            img.setImageResource(R.drawable.tiger);
         }else {
             img.setImageResource(R.drawable.octopus);
         }

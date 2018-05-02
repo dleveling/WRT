@@ -5,7 +5,7 @@ import java.util.Random;
 public class WRTs {
 
     public static final Random RANDOMWRT = new Random();
-    public static final String[] WORDS = {"ant","snake","spider","king","boat","bee","alligator","bear","fish","monkey","cat","dog","octopus"};
+    public static final String[] WORDS = {"ant","snake","spider","king","boat","bee","alligator","bear","fish","monkey","cat","dog","octopus","horse","jellyfish","lion","owl","rabbit","starfish","tiger"};
 
     public static String randomWords(){
         return WORDS[RANDOMWRT.nextInt(WORDS.length)];
