@@ -11,12 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class GvActivity extends AppCompatActivity implements View.OnClickListener {
 
     public int[] imageArray = {R.drawable.ant,R.drawable.snake,R.drawable.spider,R.drawable.king,R.drawable.boat,R.drawable.bee,R.drawable.alligator
             ,R.drawable.bear,R.drawable.fish,R.drawable.monkey,R.drawable.cat,R.drawable.dog,R.drawable.octopus};
 
     private TextView SkipChance;
+    private TextView Lid;
     private TextView Score ;
     private TextView WRDtv;
     private EditText WRDet;
@@ -27,6 +30,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
 
     int sc = 0;
     int skipChance = 3;
+    int lifeChance = 3;
 
     Dialog myDialog;
 
@@ -37,6 +41,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_gv);
         myDialog = new Dialog(this);
         SkipChance = (TextView) findViewById(R.id.chancegame_id);
+        Lid = (TextView) findViewById(R.id.Life_id);
         Score = (TextView) findViewById(R.id.scoregame_id);
         WRDtv = (TextView) findViewById(R.id.tv_wtf);
         WRDet = (EditText) findViewById(R.id.et_enter);
@@ -58,7 +63,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
                 skipChance = skipChance - 1;
                 newGame();
             }else{
-                ShowPopupSkip("No Chance Left.");
+                ShowPopupSkip("\uD83D\uDE1C \n No Chance Left.");
             }
 
         }
@@ -67,14 +72,20 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     private void CheckWrd(){
         String wrd = WRDet.getText().toString();
         if (wordToFind.equals(wrd)){
-            //Toast.makeText(this,"Correct !",Toast.LENGTH_SHORT).show();
+            ShowPopupSkip("\uD83D\uDE42 \n Score +1 !");
             ScoreUp();
             Score.setText("Score : "+(sc));
-            ShowPopupSkip("Score +1 !");
             newGame();
         }else{
-            //Toast.makeText(this,"Retry !",Toast.LENGTH_SHORT).show();
-            ShowPopupSkip("Retry !");
+            ShowPopupSkip("☹️\n Retry !");
+
+            if (lifeChance<= 3 && lifeChance > 0){
+                lifeChance = lifeChance - 1;
+                Lid.setText("❤ "+lifeChance);
+            }else {
+                ShowPopupGameOver();
+            }
+
         }
     }
 
@@ -150,6 +161,30 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         });
 
         myDialog.show();
+    }
+
+    private void ShowPopupGameOver(){
+        TextView txtPoint;
+        Button resetButton;
+
+        myDialog.setContentView(R.layout.gameoverpopup);
+        txtPoint = (TextView) myDialog.findViewById(R.id.gameover_point_id);
+        resetButton = (Button) myDialog.findViewById(R.id.bt_reset);
+
+        txtPoint.setText(sc+"");
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skipChance = 3;
+                lifeChance = 3;
+                sc = 0;
+                Lid.setText("❤ "+lifeChance);
+                newGame();
+                myDialog.dismiss();
+            }
+        });
+
     }
 
 }
