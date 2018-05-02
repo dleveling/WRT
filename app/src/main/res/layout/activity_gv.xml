@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkbluegrey"
+    android:background="@drawable/bcp2"
     tools:context=".GvActivity">
 
     <TextView
@@ -83,15 +83,17 @@
         android:textColor="@color/white"
         android:id="@+id/bt_checkwrt"
         android:layout_width="200dp"
+        android:textSize="20dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/et_enter"
         android:layout_centerHorizontal="true"
         android:text="Check"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="22dp"
         android:background="@drawable/buttonstyle"/>
 
     <Button
         android:textColor="@color/white"
+        android:textSize="20dp"
         android:id="@+id/bt_skipwrt"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
