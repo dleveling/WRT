@@ -36,7 +36,6 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gv);
         myDialog = new Dialog(this);
-
         SkipChance = (TextView) findViewById(R.id.chancegame_id);
         Score = (TextView) findViewById(R.id.scoregame_id);
         WRDtv = (TextView) findViewById(R.id.tv_wtf);
@@ -59,8 +58,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
                 skipChance = skipChance - 1;
                 newGame();
             }else{
-                Toast.makeText(this,"No Chance Left." ,Toast.LENGTH_SHORT).show();
-
+                ShowPopupSkip("No Chance Left.");
             }
 
         }
@@ -69,12 +67,14 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     private void CheckWrd(){
         String wrd = WRDet.getText().toString();
         if (wordToFind.equals(wrd)){
-            Toast.makeText(this,"Correct !",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Correct !",Toast.LENGTH_SHORT).show();
             ScoreUp();
             Score.setText("Score : "+(sc));
+            ShowPopupSkip("Score +1 !");
             newGame();
         }else{
-            Toast.makeText(this,"Retry !",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Retry !",Toast.LENGTH_SHORT).show();
+            ShowPopupSkip("Retry !");
         }
     }
 
@@ -124,12 +124,16 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         sc = sc+1;
     }
 
-    public void ShowPopupSkip(View v){
-        TextView txtclose;
+    public void ShowPopupSkip(String textQ){
+        TextView txtclose,textto;
         Button btnOkay;
+
         myDialog.setContentView(R.layout.custompopup);
         txtclose = (TextView) myDialog.findViewById(R.id.xclose);
+        textto = (TextView) myDialog.findViewById(R.id.textShowPopup01);
         btnOkay = (Button) myDialog.findViewById(R.id.bt_okread);
+
+        textto.setText(textQ+"");
 
         btnOkay.setOnClickListener(new View.OnClickListener() {
             @Override
