@@ -74,7 +74,6 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         if (wordToFind.equals(wrd)){
             ShowPopupSkip("\uD83D\uDE42 \n Score +1 !");
             ScoreUp();
-            Score.setText("Score : "+(sc));
             newGame();
         }else{
             ShowPopupSkip("☹️\n Retry !");
@@ -91,6 +90,8 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
 
     private void newGame(){
         SkipChance.setText("Skip : "+(skipChance));
+        Score.setText("Score : "+(sc));
+        Lid.setText("❤ "+lifeChance);
         wordToFind = WRTs.randomWords();
         setImage(wordToFind);
         imgName = "R.drawable."+wordToFind;
@@ -179,7 +180,6 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
                 skipChance = 3;
                 lifeChance = 3;
                 sc = 0;
-                Lid.setText("❤ "+lifeChance);
                 newGame();
                 myDialog.dismiss();
             }
