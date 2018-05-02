@@ -1,6 +1,7 @@
 package com.example.pcx.wrt;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,11 +28,14 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     int sc = 0;
     int skipChance = 3;
 
+    Dialog myDialog;
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gv);
+        myDialog = new Dialog(this);
 
         SkipChance = (TextView) findViewById(R.id.chancegame_id);
         Score = (TextView) findViewById(R.id.scoregame_id);
@@ -53,10 +57,10 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
         }else if (v == skipbt){
             if (skipChance <= 3 && skipChance > 0){
                 skipChance = skipChance - 1;
-                Toast.makeText(this,"Chance Left : " + skipChance ,Toast.LENGTH_SHORT).show();
                 newGame();
             }else{
-                Toast.makeText(this," Game Over ! " ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"No Chance Left." ,Toast.LENGTH_SHORT).show();
+
             }
 
         }
@@ -65,7 +69,7 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
     private void CheckWrd(){
         String wrd = WRDet.getText().toString();
         if (wordToFind.equals(wrd)){
-            Toast.makeText(this,"Correct,Get 1 Point !!!" + wordToFind,Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Correct !",Toast.LENGTH_SHORT).show();
             ScoreUp();
             Score.setText("Score : "+(sc));
             newGame();
@@ -118,6 +122,30 @@ public class GvActivity extends AppCompatActivity implements View.OnClickListene
 
     private void ScoreUp(){
         sc = sc+1;
+    }
+
+    public void ShowPopupSkip(View v){
+        TextView txtclose;
+        Button btnOkay;
+        myDialog.setContentView(R.layout.custompopup);
+        txtclose = (TextView) myDialog.findViewById(R.id.xclose);
+        btnOkay = (Button) myDialog.findViewById(R.id.bt_okread);
+
+        btnOkay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+
+        myDialog.show();
     }
 
 }
